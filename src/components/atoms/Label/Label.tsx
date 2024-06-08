@@ -4,7 +4,7 @@ import React from "react";
 import classNames from "classnames";
 
 export interface LabelProps {
-  text: string;
+  text?: string;
   size?: "small" | "medium" | "large";
   customClass?: string;
   id?: string;

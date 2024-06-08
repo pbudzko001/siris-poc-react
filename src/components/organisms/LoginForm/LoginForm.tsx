@@ -10,24 +10,26 @@ export interface LoginFormProps
     ButtonProps,
     TitleProps,
     LinkProps {
+  onLogin: (username: string, password: string) => void;
   customClass?: string;
   id?: string;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({ customClass }) => {
+const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = () => {
-    // Handle login logic
-    console.log({ email, password });
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    onLogin(email, password);
   };
+
   const baseStyle = "bg-white p-8 rounded shadow-md w-full max-w-md";
   const classes = classNames(baseStyle, customClass);
   return (
     <div className={classes}>
       <Title level={2} text="Sign in as employee" customClass="mb-6"></Title>
-      <form className="w-full max-w-sm">
+      <form onSubmit={handleSubmit} className="w-full max-w-sm">
         <Input
           id="email"
           type="email"
@@ -43,7 +45,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ customClass }) => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <div className="flex items-center justify-between">
-          <Button label="Sign in" onClick={handleSubmit} />
+          <Button type="submit" label="Sign in" />
           <Link href="/forgot-password" text="forgot your password?" />
         </div>
       </form>

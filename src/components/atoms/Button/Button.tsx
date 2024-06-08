@@ -4,15 +4,17 @@ import React from "react";
 import classNames from "classnames";
 
 export interface ButtonProps {
-  label: string;
+  type: "submit" | "reset" | "button";
+  label?: string;
   variant?: "primary" | "secondary";
   size?: "small" | "large";
   customClass?: string;
   id?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
+  type,
   label,
   variant = "primary",
   size = "small",
@@ -29,7 +31,7 @@ const Button: React.FC<ButtonProps> = ({
   });
 
   return (
-    <button id={id} className={buttonClass} onClick={onClick}>
+    <button id={id} type={type} className={buttonClass} onClick={onClick}>
       {label}
     </button>
   );

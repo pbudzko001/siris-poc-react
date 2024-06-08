@@ -4,8 +4,8 @@ import React from "react";
 import classNames from "classnames";
 
 export interface LinkProps {
-  href: string;
-  text: string;
+  href?: string;
+  text?: string;
   newTab?: boolean;
   className?: string;
 }
