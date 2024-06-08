@@ -1,12 +1,20 @@
-import { StoryFn, Meta } from "@storybook/react";
-import Label from "./Label";
+import { Meta, StoryFn } from "@storybook/react";
+import Label, { LabelProps } from "./Label";
 
 export default {
   title: "Atoms/Label",
   component: Label,
-} as Meta<typeof Label>;
+  argTypes: {
+    size: {
+      control: {
+        type: "select",
+        options: ["small", "medium", "large"],
+      },
+    },
+  },
+} as Meta;
 
-const Template: StoryFn<typeof Label> = (args) => <Label {...args} />;
+const Template: StoryFn<LabelProps> = (args) => <Label {...args} />;
 
 export const Small = Template.bind({});
 Small.args = {
@@ -26,23 +34,9 @@ Large.args = {
   size: "large",
 };
 
-export const SmallError = Template.bind({});
-SmallError.args = {
-  text: "Small Label",
-  size: "small",
-  errorMessage: "This is an error message",
-};
-
-export const MediumError = Template.bind({});
-MediumError.args = {
-  text: "Medium Label",
+export const CustomClass = Template.bind({});
+CustomClass.args = {
+  text: "Custom Class Label",
+  className: "text-blue-500",
   size: "medium",
-  errorMessage: "This is an error message",
-};
-
-export const LargeError = Template.bind({});
-LargeError.args = {
-  text: "Large Label",
-  size: "large",
-  errorMessage: "This is an error message",
 };

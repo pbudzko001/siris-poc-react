@@ -1,19 +1,30 @@
-import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+// path: src/components/Link.tsx
 
-interface LinkProps {
-  to: string;
+import React from "react";
+import classNames from "classnames";
+
+export interface LinkProps {
+  href: string;
   text: string;
+  newTab?: boolean;
+  className?: string;
 }
 
-const Link: React.FC<LinkProps> = ({ to, text }) => {
+const Link: React.FC<LinkProps> = ({
+  href,
+  text,
+  newTab = false,
+  className,
+}) => {
   return (
-    <RouterLink
-      to={to}
-      className="inline-block align-baseline font-bold text-sm text-green-500 hover:text-green-800"
+    <a
+      href={href}
+      target={newTab ? "_blank" : "_self"}
+      rel={newTab ? "noopener noreferrer" : undefined}
+      className={classNames("text-blue-500 hover:underline", className)}
     >
       {text}
-    </RouterLink>
+    </a>
   );
 };
 

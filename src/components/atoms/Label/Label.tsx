@@ -3,35 +3,23 @@
 import React from "react";
 import classNames from "classnames";
 
-interface LabelProps {
+export interface LabelProps {
   text: string;
   size?: "small" | "medium" | "large";
-  errorMessage?: string;
+  className?: string;
 }
 
-const Label: React.FC<LabelProps> = ({
-  text,
-  size = "medium",
-  errorMessage,
-}) => {
-  const labelClass = classNames({
-    "text-sm": size === "small",
-    "text-base": size === "medium",
-    "text-lg": size === "large",
-  });
+const Label: React.FC<LabelProps> = ({ text, size = "medium", className }) => {
+  const baseStyle = "text-gray-700 font-medium";
+  const sizeStyle = {
+    small: "text-xs",
+    medium: "text-sm",
+    large: "text-lg",
+  };
 
-  const errorClass = classNames("text-red-500", {
-    "text-sm": size === "small",
-    "text-base": size === "medium",
-    "text-lg": size === "large",
-  });
+  const classes = classNames(baseStyle, sizeStyle[size], className);
 
-  return (
-    <div>
-      <label className={labelClass}>{text}</label>
-      {errorMessage && <div className={errorClass}>{errorMessage}</div>}
-    </div>
-  );
+  return <span className={classes}>{text}</span>;
 };
 
 export default Label;
