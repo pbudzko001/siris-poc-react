@@ -5,6 +5,8 @@ import classNames from "classnames";
 
 export interface InputProps {
   // Export the interface
+  type?: string;
+  value?: string;
   placeholder?: string;
   disabled?: boolean;
   helpText?: string;
@@ -15,6 +17,8 @@ export interface InputProps {
 }
 
 const Input: React.FC<InputProps> = ({
+  type,
+  value,
   placeholder,
   disabled,
   helpText,
@@ -27,7 +31,8 @@ const Input: React.FC<InputProps> = ({
     <div className="mb-4">
       <input
         id={id}
-        type="text"
+        type={type}
+        value={value}
         placeholder={placeholder}
         disabled={disabled}
         onChange={onChange}
