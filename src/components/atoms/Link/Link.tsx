@@ -1,6 +1,6 @@
 // src/components/atoms/Link.tsx
-import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import React from "react";
+import { Link as RouterLink } from "react-router-dom";
 
 interface LinkProps {
   to: string;
@@ -8,7 +8,7 @@ interface LinkProps {
 }
 
 const Link: React.FC<LinkProps> = ({ to, label }) => (
-  <RouterLink to={to} className="text-teal-500 hover:underline">
+  <RouterLink to={to} className="text-teal-500 hover:underline text-sm">
     {label}
   </RouterLink>
 );
