@@ -1,32 +1,43 @@
+// src/components/InputWithLabel.tsx
+
 import React from "react";
 import Label from "../../atoms/Label/Label";
 import Input from "../../atoms/Input/Input";
 
 interface InputWithLabelProps {
-  id: string;
   label: string;
-  type: string;
-  value: string;
-  placeholder?: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  inputPlaceholder: string;
+  size?: "small" | "medium" | "large";
+  variant?: "primary" | "secondary";
+  disabled?: boolean;
+  required?: boolean;
+  helpText?: string;
+  errorMessage?: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const InputWithLabel: React.FC<InputWithLabelProps> = ({
-  id,
   label,
-  type,
-  value,
-  placeholder,
+  inputPlaceholder,
+  size = "medium",
+  variant = "primary",
+  disabled = false,
+  required = false,
+  helpText,
+  errorMessage,
   onChange,
 }) => {
   return (
     <div className="mb-4">
-      <Label htmlFor={id} text={label} />
+      <Label text={label} size={size} />
       <Input
-        id={id}
-        type={type}
-        value={value}
-        placeholder={placeholder}
+        placeholder={inputPlaceholder}
+        size={size}
+        variant={variant}
+        disabled={disabled}
+        required={required}
+        helpText={helpText}
+        errorMessage={errorMessage}
         onChange={onChange}
       />
     </div>

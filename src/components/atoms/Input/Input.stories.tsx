@@ -19,6 +19,14 @@ PrimarySmallActive.args = {
   disabled: false,
 };
 
+export const PrimaryMediumActive = Template.bind({});
+PrimaryMediumActive.args = {
+  placeholder: "Primary Medium Active",
+  variant: "primary",
+  size: "medium",
+  disabled: false,
+};
+
 export const PrimaryLargeActive = Template.bind({});
 PrimaryLargeActive.args = {
   placeholder: "Primary Large Active",
@@ -32,6 +40,14 @@ SecondarySmallActive.args = {
   placeholder: "Secondary Small Active",
   variant: "secondary",
   size: "small",
+  disabled: false,
+};
+
+export const SecondaryMediumActive = Template.bind({});
+SecondaryMediumActive.args = {
+  placeholder: "Secondary Medium Active",
+  variant: "secondary",
+  size: "medium",
   disabled: false,
 };
 
@@ -51,6 +67,14 @@ PrimarySmallDisabled.args = {
   disabled: true,
 };
 
+export const PrimaryMediumDisabled = Template.bind({});
+PrimaryMediumDisabled.args = {
+  placeholder: "Primary Medium Disabled",
+  variant: "primary",
+  size: "medium",
+  disabled: true,
+};
+
 export const PrimaryLargeDisabled = Template.bind({});
 PrimaryLargeDisabled.args = {
   placeholder: "Primary Large Disabled",
@@ -67,10 +91,63 @@ SecondarySmallDisabled.args = {
   disabled: true,
 };
 
+export const SecondaryMediumDisabled = Template.bind({});
+SecondaryMediumDisabled.args = {
+  placeholder: "Secondary Medium Disabled",
+  variant: "secondary",
+  size: "medium",
+  disabled: true,
+};
+
 export const SecondaryLargeDisabled = Template.bind({});
 SecondaryLargeDisabled.args = {
   placeholder: "Secondary Large Disabled",
   variant: "secondary",
   size: "large",
   disabled: true,
+};
+
+export const SmallError = Template.bind({});
+SmallError.args = {
+  placeholder: "Small Input",
+  size: "small",
+  variant: "primary",
+  disabled: false,
+  errorMessage: "This is an error message",
+};
+
+export const MediumError = Template.bind({});
+MediumError.args = {
+  placeholder: "Medium Input",
+  size: "medium",
+  variant: "primary",
+  disabled: false,
+  errorMessage: "This is an error message",
+};
+
+export const LargeError = Template.bind({});
+LargeError.args = {
+  placeholder: "Large Input",
+  size: "large",
+  variant: "primary",
+  disabled: false,
+  errorMessage: "This is an error message",
+};
+
+export const WithHelpText = Template.bind({});
+WithHelpText.args = {
+  placeholder: "Input with Help Text",
+  size: "medium",
+  variant: "primary",
+  disabled: false,
+  helpText: "This is some helper text",
+};
+
+export const RequiredField = Template.bind({});
+RequiredField.args = {
+  placeholder: "Required Input",
+  size: "medium",
+  variant: "primary",
+  disabled: false,
+  required: true,
 };
