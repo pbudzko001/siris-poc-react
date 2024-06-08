@@ -4,26 +4,27 @@ import React from "react";
 import classNames from "classnames";
 
 export interface LinkProps {
-  href?: string;
-  text?: string;
+  url: string;
+  linkText: string;
   newTab?: boolean;
   className?: string;
 }
 
 const Link: React.FC<LinkProps> = ({
-  href,
-  text,
+  url,
+  linkText,
   newTab = false,
   className,
 }) => {
   return (
     <a
-      href={href}
+      href={url}
       target={newTab ? "_blank" : "_self"}
       rel={newTab ? "noopener noreferrer" : undefined}
       className={classNames("text-blue-500 hover:underline", className)}
+      aria-label={linkText}
     >
-      {text}
+      {linkText}
     </a>
   );
 };

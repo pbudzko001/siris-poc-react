@@ -4,13 +4,18 @@ import React from "react";
 import classNames from "classnames";
 
 export interface TitleProps {
-  text?: string;
+  titleText: string;
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   customClass?: string;
   id?: string;
 }
 
-const Title: React.FC<TitleProps> = ({ text, level = 1, customClass, id }) => {
+const Title: React.FC<TitleProps> = ({
+  titleText,
+  level = 1,
+  customClass,
+  id,
+}) => {
   const HeadingTag = `h${level}` as keyof JSX.IntrinsicElements;
   const baseStyle = "font-bold";
   const sizeStyle = {
@@ -22,11 +27,14 @@ const Title: React.FC<TitleProps> = ({ text, level = 1, customClass, id }) => {
     6: "text-xs",
   };
 
-  const classes = classNames(baseStyle, sizeStyle[level], customClass);
+  const classes = React.useMemo(
+    () => classNames(baseStyle, sizeStyle[level], customClass),
+    [baseStyle, sizeStyle, level, customClass]
+  );
 
   return (
-    <HeadingTag id={id} className={classes}>
-      {text}
+    <HeadingTag id={id} className={classes} aria-label={titleText || undefined}>
+      {titleText}
     </HeadingTag>
   );
 };

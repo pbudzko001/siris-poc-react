@@ -1,6 +1,6 @@
 // src/components/Label.tsx
 
-import React from "react";
+import React, { memo } from "react";
 import classNames from "classnames";
 
 export interface LabelProps {
@@ -10,26 +10,25 @@ export interface LabelProps {
   id?: string;
 }
 
-const Label: React.FC<LabelProps> = ({
-  text,
-  size = "medium",
-  customClass,
-  id,
-}) => {
-  const baseStyle = "text-gray-700 font-medium";
-  const sizeStyle = {
-    small: "text-xs",
-    medium: "text-sm",
-    large: "text-lg",
-  };
+const Label: React.FC<LabelProps> = memo(
+  ({ text = "Default Text", size = "medium", customClass, id }) => {
+    const baseStyle = "text-gray-700 font-medium";
+    const sizeStyle: Record<string, string> = {
+      small: "text-xs",
+      medium: "text-sm",
+      large: "text-lg",
+    };
 
-  const classes = classNames(baseStyle, sizeStyle[size], customClass);
+    const classes = classNames(baseStyle, sizeStyle[size], customClass);
 
-  return (
-    <span id={id} className={classes}>
-      {text}
-    </span>
-  );
-};
+    return (
+      <span id={id} className={classes}>
+        {text}
+      </span>
+    );
+  }
+);
+
+Label.displayName = "Label";
 
 export default Label;

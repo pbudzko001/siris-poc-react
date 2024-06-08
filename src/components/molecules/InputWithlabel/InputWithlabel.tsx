@@ -13,15 +13,17 @@ export interface InputWithLabelProps extends InputProps, LabelProps {
 const InputWithLabel: React.FC<InputWithLabelProps> = ({
   text,
   size,
-  placeholder,
-  disabled,
+  placeholder = "",
+  disabled = false,
   helpText,
   errorMessage,
-  customClass,
+  customClass = "",
   onChange,
+  ...rest
 }) => {
   const baseStyle = "mb-4";
   const classes = classNames(baseStyle, customClass);
+
   return (
     <div className={classes}>
       <Label text={text} size={size} />
@@ -31,6 +33,7 @@ const InputWithLabel: React.FC<InputWithLabelProps> = ({
         helpText={helpText}
         errorMessage={errorMessage}
         onChange={onChange}
+        {...rest}
       />
     </div>
   );

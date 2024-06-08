@@ -1,10 +1,8 @@
-// src/components/Button.tsx
-
 import React from "react";
 import classNames from "classnames";
 
 export interface ButtonProps {
-  type: "submit" | "reset" | "button";
+  buttonType?: "submit" | "reset" | "button";
   label?: string;
   variant?: "primary" | "secondary";
   size?: "small" | "large";
@@ -14,24 +12,36 @@ export interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({
-  type,
-  label,
+  buttonType,
+  label = "",
   variant = "primary",
   size = "small",
-  customClass,
+  customClass = "",
   id,
   onClick,
 }) => {
-  const buttonClass = classNames("font-bold py-2 px-4 rounded", {
-    "bg-blue-500 hover:bg-blue-700 text-white": variant === "primary",
-    "bg-gray-500 hover:bg-gray-700 text-white": variant === "secondary",
-    "text-sm": size === "small",
-    "text-lg py-3 px-6": size === "large",
-    customClass,
-  });
+  const baseClass = "font-bold py-2 px-4 rounded";
+  const variantClass =
+    variant === "primary"
+      ? "bg-blue-500 hover:bg-blue-700 text-white"
+      : "bg-gray-500 hover:bg-gray-700 text-white";
+  const sizeClass = size === "small" ? "text-sm" : "text-lg py-3 px-6";
+
+  const buttonClass = classNames(
+    baseClass,
+    variantClass,
+    sizeClass,
+    customClass
+  );
 
   return (
-    <button id={id} type={type} className={buttonClass} onClick={onClick}>
+    <button
+      id={id}
+      type={buttonType}
+      className={buttonClass}
+      onClick={onClick}
+      aria-label={label || undefined}
+    >
       {label}
     </button>
   );
