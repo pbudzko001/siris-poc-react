@@ -9,6 +9,8 @@ export interface InputProps {
   disabled?: boolean;
   helpText?: string;
   errorMessage?: string;
+  customClass?: string;
+  id?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -17,21 +19,28 @@ const Input: React.FC<InputProps> = ({
   disabled,
   helpText,
   errorMessage,
+  customClass,
+  id,
   onChange,
 }) => {
   return (
     <div className="mb-4">
       <input
+        id={id}
         type="text"
         placeholder={placeholder}
         disabled={disabled}
         onChange={onChange}
-        className={classNames("w-full p-2 border rounded", {
-          "border-red-500": errorMessage,
-          "border-gray-300": !errorMessage,
-          "bg-gray-100": disabled,
-          "bg-white": !disabled,
-        })}
+        className={classNames(
+          "w-full p-2 border rounded",
+          {
+            "border-red-500": errorMessage,
+            "border-gray-300": !errorMessage,
+            "bg-gray-100": disabled,
+            "bg-white": !disabled,
+          },
+          customClass
+        )}
       />
       {helpText && !errorMessage && (
         <p className="mt-2 text-sm text-gray-500">{helpText}</p>

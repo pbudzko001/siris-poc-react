@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import InputWithLabel from "../../molecules/InputWithlabel/InputWithlabel";
 import Button from "../../atoms/Button/Button";
 import Link from "../../atoms/Link/Link";
+import Title from "../../atoms/Title/Title";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ const Login: React.FC = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6">Sign in as employee</h2>
+        <Title level={2} text="Sign in as employee" customClass="mb-6"></Title>
         <form className="w-full max-w-sm">
           <InputWithLabel
             id="email"

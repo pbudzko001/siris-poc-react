@@ -48,5 +48,5 @@ export const CustomClass = Template.bind({});
 CustomClass.args = {
   text: "Custom Class Title",
   level: 2,
-  className: "text-blue-500",
+  customClass: "text-blue-500",
 };
