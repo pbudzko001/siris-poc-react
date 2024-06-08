@@ -3,7 +3,7 @@
 import React from "react";
 import classNames from "classnames";
 
-interface ButtonProps {
+export interface ButtonProps {
   label: string;
   variant?: "primary" | "secondary";
   size?: "small" | "large";
