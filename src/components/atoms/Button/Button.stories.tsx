@@ -38,3 +38,36 @@ SecondaryLarge.args = {
   variant: "secondary",
   size: "large",
 };
+
+// New Disabled Stories
+export const PrimarySmallDisabled = Template.bind({});
+PrimarySmallDisabled.args = {
+  label: "Primary Small Disabled",
+  variant: "primary",
+  size: "small",
+  disabled: true,
+};
+
+export const PrimaryLargeDisabled = Template.bind({});
+PrimaryLargeDisabled.args = {
+  label: "Primary Large Disabled",
+  variant: "primary",
+  size: "large",
+  disabled: true,
+};
+
+export const SecondarySmallDisabled = Template.bind({});
+SecondarySmallDisabled.args = {
+  label: "Secondary Small Disabled",
+  variant: "secondary",
+  size: "small",
+  disabled: true,
+};
+
+export const SecondaryLargeDisabled = Template.bind({});
+SecondaryLargeDisabled.args = {
+  label: "Secondary Large Disabled",
+  variant: "secondary",
+  size: "large",
+  disabled: true,
+};

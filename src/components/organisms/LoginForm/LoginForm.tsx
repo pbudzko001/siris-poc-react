@@ -2,10 +2,11 @@
 
 import React, { useState, useCallback } from "react";
 import Title from "../../atoms/Title/Title";
-import Link from "../../atoms/Link/Link";
 import Button from "../../atoms/Button/Button";
 import Input from "../../atoms/Input/Input";
+import InputWithIcon from "../../molecules/InputWithIcon/InputWithIcon";
 import Icon from "../../atoms/Icon/Icon";
+import Image from "../../atoms/Image/Image";
 import Label from "../../atoms/Label/Label";
 import classNames from "classnames";
 
@@ -18,13 +19,7 @@ export interface LoginFormProps {
   titleText: string;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({
-  onLogin,
-  customClass,
-  url,
-  linkText,
-  titleText,
-}) => {
+const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText }) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,7 +40,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
 
   return (
     <div className={classes}>
-      <Icon iconName="react"></Icon>
+      <Image imageSize="small" imageName="pwc-logo"></Image>
       <Title level={2} titleText={titleText} customClass="mb-6" />
       <form onSubmit={handleSubmit} className="w-full max-w-sm">
         <div>
@@ -59,18 +54,18 @@ const LoginForm: React.FC<LoginFormProps> = ({
           />
         </div>
         <div>
-          <Label text="Password"></Label>
-          <Input
+          <Label text="Palavra-passe"></Label>
+          <InputWithIcon
             id="password"
             inputType="password"
             value={formData.password}
             placeholder="Enter your password"
             onChange={handleInputChange}
+            iconName="view"
           />
         </div>
         <div className="flex items-center justify-between mt-4">
-          <Button buttonType="submit" label="Sign in" />
-          <Link url={url} linkText={linkText} />
+          <Button buttonType="submit" label="ENTRAR" />
         </div>
       </form>
     </div>

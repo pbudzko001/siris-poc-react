@@ -42,7 +42,7 @@ const Login: React.FC = () => {
         url="/forgot-password"
         linkText="Forgot your password?"
         onLogin={handleLogin}
-        titleText="Sign in as employee"
+        titleText="Solução Bancária Integrada"
       />
     </div>
   );
