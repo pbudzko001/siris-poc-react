@@ -5,6 +5,7 @@ import Title from "../../atoms/Title/Title";
 import Link from "../../atoms/Link/Link";
 import Button from "../../atoms/Button/Button";
 import Input from "../../atoms/Input/Input";
+import Icon from "../../atoms/Icon/Icon";
 import Label from "../../atoms/Label/Label";
 import classNames from "classnames";
 
@@ -44,6 +45,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
 
   return (
     <div className={classes}>
+      <Icon iconName="react"></Icon>
       <Title level={2} titleText={titleText} customClass="mb-6" />
       <form onSubmit={handleSubmit} className="w-full max-w-sm">
         <div>

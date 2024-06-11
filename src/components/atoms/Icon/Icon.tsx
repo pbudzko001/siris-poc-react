@@ -21,14 +21,16 @@ const Icon: React.FC<IconProps> = memo(
 
     useEffect(() => {
       let isMounted = true;
-      import(`../../assets/icons/${iconName}.svg`)
-        .then((module) => {
-          if (isMounted) setSvgIcon(() => module.default);
-        })
-        .catch((err) => {
+      const importIcon = async () => {
+        try {
+          const module = await import(`../../../assets/icons/${iconName}.svg?url`);
+          if (isMounted) setSvgIcon(() => () => <image href={module.default} />);
+        } catch (err) {
           console.error(`Icon ${iconName} not found`, err);
           if (isMounted) setSvgIcon(null);
-        });
+        }
+      };
+      importIcon();
       return () => {
         isMounted = false;
       };
