@@ -1,44 +1,59 @@
 import { Meta, StoryFn } from "@storybook/react";
 import Icon, { IconProps } from "./Icon";
 
+// Define default export metadata
 export default {
   title: "Atoms/Icon",
   component: Icon,
   argTypes: {
-    icon: { control: "text" },
-    size: { control: "text" },
-    color: { control: "color" },
+    iconName: { control: "text" },
+    iconSize: {
+      control: {
+        type: "select",
+        options: ["small", "medium", "large"],
+      },
+    },
+    iconColor: { control: "text" },
+    className: { control: "text" },
     onClick: { action: "clicked" },
   },
 } as Meta;
 
+// Create a template for the Icon component
 const Template: StoryFn<IconProps> = (args) => <Icon {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
-  iconName: "home",
+// Define stories for different configurations
+export const Small = Template.bind({});
+Small.args = {
+  iconName: "example-icon",
   iconSize: "small",
   iconColor: "text-gray-500",
 };
 
-export const Large = Template.bind({});
-Large.args = {
-  iconName: "home",
-  iconSize: "large",
+export const Medium = Template.bind({});
+Medium.args = {
+  iconName: "example-icon",
+  iconSize: "medium",
   iconColor: "text-blue-500",
 };
 
-export const Red = Template.bind({});
-Red.args = {
-  iconName: "home",
-  iconSize: "small",
-  iconColor: "text-red-500",
+export const Large = Template.bind({});
+Large.args = {
+  iconName: "example-icon",
+  iconSize: "large",
+  iconColor: "text-green-500",
 };
 
-export const Clickable = Template.bind({});
-Clickable.args = {
-  iconName: "home",
-  iconSize: "small",
-  iconColor: "text-green-500",
+export const CustomClass = Template.bind({});
+CustomClass.args = {
+  iconName: "example-icon",
+  className: "bg-yellow-200 p-2 rounded",
+};
+
+export const WithClickHandler = Template.bind({});
+WithClickHandler.args = {
+  iconName: "example-icon",
+  iconSize: "medium",
+  iconColor: "text-black",
   onClick: () => alert("Icon clicked!"),
 };

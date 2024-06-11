@@ -1,4 +1,4 @@
-import React from "react";
+import React, { SVGProps, useEffect, useState, memo } from "react";
 import classNames from "classnames";
 
 export interface IconProps {
@@ -9,33 +9,43 @@ export interface IconProps {
   onClick?: () => void; // Click event handler
 }
 
-const Icon: React.FC<IconProps> = ({
-  iconName,
-  iconSize = "medium",
-  iconColor = "text-black",
-  className,
-  onClick,
-}) => {
-  const sizeClasses = {
-    small: "h-4 w-4",
-    medium: "h-6 w-6",
-    large: "h-8 w-8",
-  };
-
-  return (
-    <svg
-      className={classNames(
-        sizeClasses[iconSize],
-        iconColor,
-        className,
-        "cursor-pointer"
-      )}
-      onClick={onClick}
-      aria-hidden="true"
-    >
-      <use xlinkHref={`#${iconName}`} />
-    </svg>
-  );
+const sizeClasses = {
+  small: "h-4 w-4",
+  medium: "h-6 w-6",
+  large: "h-8 w-8",
 };
+
+const Icon: React.FC<IconProps> = memo(
+  ({ iconName, iconSize = "medium", iconColor = "text-black", className, onClick }) => {
+    const [SvgIcon, setSvgIcon] = useState<React.FC<SVGProps<SVGSVGElement>> | null>(null);
+
+    useEffect(() => {
+      let isMounted = true;
+      import(`../../assets/icons/${iconName}.svg`)
+        .then((module) => {
+          if (isMounted) setSvgIcon(() => module.default);
+        })
+        .catch((err) => {
+          console.error(`Icon ${iconName} not found`, err);
+          if (isMounted) setSvgIcon(null);
+        });
+      return () => {
+        isMounted = false;
+      };
+    }, [iconName]);
+
+    if (!SvgIcon) return <span className="text-red-500">Icon not found</span>;
+
+    return (
+      <svg
+        className={classNames(sizeClasses[iconSize], iconColor, className, "cursor-pointer")}
+        onClick={onClick}
+        aria-hidden="true"
+      >
+        <SvgIcon />
+      </svg>
+    );
+  }
+);
 
 export default Icon;

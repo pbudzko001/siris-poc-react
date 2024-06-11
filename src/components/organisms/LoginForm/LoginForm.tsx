@@ -5,6 +5,7 @@ import Title from "../../atoms/Title/Title";
 import Link from "../../atoms/Link/Link";
 import Button from "../../atoms/Button/Button";
 import Input from "../../atoms/Input/Input";
+import Label from "../../atoms/Label/Label";
 import classNames from "classnames";
 
 export interface LoginFormProps {
@@ -25,13 +26,10 @@ const LoginForm: React.FC<LoginFormProps> = ({
 }) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
 
-  const handleInputChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { id, value } = e.target;
-      setFormData((prev) => ({ ...prev, [id]: value }));
-    },
-    []
-  );
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  }, []);
 
   const handleSubmit = useCallback(
     (event: React.FormEvent) => {
@@ -49,12 +47,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
       <Title level={2} titleText={titleText} customClass="mb-6" />
       <form onSubmit={handleSubmit} className="w-full max-w-sm">
         <div>
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Email
-          </label>
+          <Label text="Email"></Label>
           <Input
             id="email"
             inputType="email"
@@ -64,12 +57,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
           />
         </div>
         <div>
-          <label
-            htmlFor="password"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Password
-          </label>
+          <Label text="Password"></Label>
           <Input
             id="password"
             inputType="password"
