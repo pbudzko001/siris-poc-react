@@ -5,7 +5,6 @@ import Title from "../../atoms/Title/Title";
 import Button from "../../atoms/Button/Button";
 import Input from "../../atoms/Input/Input";
 import InputWithIcon from "../../molecules/InputWithIcon/InputWithIcon";
-import Icon from "../../atoms/Icon/Icon";
 import Image from "../../atoms/Image/Image";
 import Label from "../../atoms/Label/Label";
 import classNames from "classnames";
@@ -35,15 +34,18 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText }
     [formData, onLogin]
   );
 
-  const baseStyle = "bg-white p-8 rounded shadow-md w-full max-w-md";
+  const baseStyle =
+    "bg-white p-8 rounded shadow-md w-full max-w-md flex flex-col items-center justify-center";
   const classes = classNames(baseStyle, customClass);
 
   return (
     <div className={classes}>
-      <Image imageSize="small" imageName="pwc-logo"></Image>
-      <Title level={2} titleText={titleText} customClass="mb-6" />
+      <div className="flex justify-center mb-4">
+        <Image imageSize="small" imageName="pwc-logo"></Image>
+      </div>
+      <Title level={3} titleText={titleText} customClass="mb-6" />
       <form onSubmit={handleSubmit} className="w-full max-w-sm">
-        <div>
+        <div className="mb-4">
           <Label text="Email"></Label>
           <Input
             id="email"
@@ -53,7 +55,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText }
             onChange={handleInputChange}
           />
         </div>
-        <div>
+        <div className="mb-4">
           <Label text="Palavra-passe"></Label>
           <InputWithIcon
             id="password"

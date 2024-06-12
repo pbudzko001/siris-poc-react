@@ -6,7 +6,6 @@ export interface InputProps {
   value?: string;
   placeholder?: string;
   disabled?: boolean;
-  helpText?: string;
   errorMessage?: string;
   customClass?: string;
   id?: string;
@@ -19,12 +18,21 @@ const Input: React.FC<InputProps> = React.memo(
     value = "",
     placeholder = "",
     disabled = false,
-    helpText,
     errorMessage,
     customClass,
     id,
     onChange,
   }) => {
+    const baseClass = "w-full h-12 p-2 border focus-visible:border-pwc-orange rounded-lg";
+    const disabledClass = {
+      "bg-gray-500": disabled,
+      "bg-white": !disabled,
+    };
+    const errorClass = {
+      "border-red-500": !!errorMessage,
+      "border-gray-300": !errorMessage,
+    };
+    const inputClass = classNames(baseClass, disabledClass, errorClass, customClass);
     return (
       <div className="mb-4">
         <input
@@ -34,18 +42,8 @@ const Input: React.FC<InputProps> = React.memo(
           placeholder={placeholder}
           disabled={disabled}
           onChange={onChange}
-          className={classNames(
-            "w-full p-2 border rounded-lg",
-            {
-              "border-red-500": !!errorMessage,
-              "border-gray-300": !errorMessage,
-              "bg-gray-500": disabled,
-              "bg-white": !disabled,
-            },
-            customClass
-          )}
+          className={inputClass}
         />
-        {helpText && !errorMessage && <p className="mt-2 text-sm text-gray-500">{helpText}</p>}
         {errorMessage && <p className="mt-2 text-sm text-red-500">{errorMessage}</p>}
       </div>
     );

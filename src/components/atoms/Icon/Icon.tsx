@@ -16,7 +16,7 @@ const sizeClasses = {
 };
 
 const Icon: React.FC<IconProps> = memo(
-  ({ iconName, iconSize = "medium", iconColor = "text-black", className, onClick }) => {
+  ({ iconName, iconSize = "medium", iconColor = "text-gray-500", className, onClick }) => {
     const [SvgIcon, setSvgIcon] = useState<React.FC<SVGProps<SVGSVGElement>> | null>(null);
 
     useEffect(() => {

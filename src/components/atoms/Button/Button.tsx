@@ -17,21 +17,19 @@ const Button: React.FC<ButtonProps> = ({
   label = "",
   variant = "primary",
   disabled = "false",
-  size = "small",
   customClass = "",
   id,
   onClick,
 }) => {
-  const baseClass = "font-bold py-2 px-4 rounded-lg w-full h-full";
+  const baseClass = "font-bold py-2 px-4 rounded-lg w-full h-12";
   const variantClass =
     variant === "primary"
       ? "bg-blue-500 hover:bg-blue-700 text-white"
       : "bg-pwcGray-500 hover:bg-gray-700 text-white";
-  const sizeClass = size === "small" ? "text-sm" : "text-lg py-3 px-6";
   const disabledClass = "opacity-50 cursor-not-allowed";
   const enabledClass = disabled ? disabledClass : "";
 
-  const buttonClass = classNames(baseClass, variantClass, sizeClass, enabledClass, customClass);
+  const buttonClass = classNames(baseClass, variantClass, enabledClass, customClass);
 
   return (
     <button

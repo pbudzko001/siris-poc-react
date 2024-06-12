@@ -1,7 +1,6 @@
 const fonts = {
   fontFamily: {
-    body: ["Nunito", "sans-serif"],
-    display: ["Oswald", "sans-serif"],
+    sans: ["Helvetica Neue", "Arial", "sans-serif"],
   },
 };
 
