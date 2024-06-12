@@ -4,7 +4,7 @@ import React, { useState, useCallback } from "react";
 import Title from "../../atoms/Title/Title";
 import Button from "../../atoms/Button/Button";
 import Input from "../../atoms/Input/Input";
-import InputWithIcon from "../../molecules/InputWithIcon/InputWithIcon";
+import InputWithIcon from "../../molecules/InputWithIcon/InputPassword";
 import Image from "../../atoms/Image/Image";
 import Label from "../../atoms/Label/Label";
 import classNames from "classnames";
@@ -46,7 +46,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText }
       <Title level={3} titleText={titleText} customClass="mb-6" />
       <form onSubmit={handleSubmit} className="w-full max-w-sm">
         <div className="mb-4">
-          <Label text="Email"></Label>
+          <Label text="Email" customClass="font-bold"></Label>
           <Input
             id="email"
             inputType="email"
@@ -56,15 +56,20 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText }
           />
         </div>
         <div className="mb-4">
-          <Label text="Palavra-passe"></Label>
-          <InputWithIcon
-            id="password"
-            inputType="password"
-            value={formData.password}
-            placeholder="Enter your password"
-            onChange={handleInputChange}
-            iconName="view"
-          />
+          <div>
+            <Label text="Palavra-passe" customClass="font-bold"></Label>
+          </div>
+          <div>
+            <InputWithIcon
+              id="password"
+              inputType="password"
+              value={formData.password}
+              placeholder="Enter your password"
+              onChange={handleInputChange}
+              iconName="view-off"
+              altIconName="view"
+            />
+          </div>
         </div>
         <div className="flex items-center justify-between mt-4">
           <Button buttonType="submit" label="ENTRAR" />

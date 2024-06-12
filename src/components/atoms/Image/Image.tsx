@@ -6,18 +6,19 @@ import classNames from "classnames";
 export interface ImageProps {
   imageName: string; // Name or path to the image
   imageSize?: "small" | "medium" | "large";
+  customSize?: string; // Custom Tailwind size classes
   className?: string; // Custom Tailwind class/es
   onClick?: () => void; // Click event handler
 }
 
 const sizeClasses = {
-  small: "h-16 w-16", // Adjusted size classes for images
+  small: "h-16 w-16",
   medium: "h-32 w-32",
   large: "h-64 w-64",
 };
 
 const Image: React.FC<ImageProps> = memo(
-  ({ imageName, imageSize = "medium", className, onClick }) => {
+  ({ imageName, imageSize = "medium", customSize, className, onClick }) => {
     const [imageSrc, setImageSrc] = useState<string | null>(null);
 
     useEffect(() => {
@@ -39,10 +40,12 @@ const Image: React.FC<ImageProps> = memo(
 
     if (!imageSrc) return <span className="text-red-500">Image not found</span>;
 
+    const sizeClass = customSize || sizeClasses[imageSize];
+
     return (
       <img
         src={imageSrc}
-        className={classNames(sizeClasses[imageSize], className, "cursor-pointer")}
+        className={classNames(sizeClass, className, "cursor-pointer")}
         onClick={onClick}
         alt={imageName}
         aria-hidden="true"

@@ -12,7 +12,7 @@ export interface LabelProps {
 
 const Label: React.FC<LabelProps> = memo(
   ({ text = "Default Text", size = "medium", customClass, id }) => {
-    const baseStyle = "text-gray-700 font-medium";
+    const baseStyle = "text-gray-700";
     const sizeStyle: Record<string, string> = {
       small: "text-xs",
       medium: "text-sm",

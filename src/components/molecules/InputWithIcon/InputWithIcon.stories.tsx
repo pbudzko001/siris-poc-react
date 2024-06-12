@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from "@storybook/react";
-import InputWithIcon, { InputWithIconProps } from "./InputWithIcon";
+import InputWithIcon, { InputWithIconProps } from "./InputPassword";
 
 export default {
   title: "Molecules/InputWithIcon",

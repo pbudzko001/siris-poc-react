@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import Input, { InputProps } from "../../atoms/Input/Input";
 import Icon from "../../atoms/Icon/Icon";
 
-interface InputWithIconProps extends InputProps {
+interface InputPasswordProps extends InputProps {
   iconName: string;
+  altIconName: string;
   iconSize?: "small" | "medium" | "large";
   iconColor?: string;
   onIconClick?: () => void;
 }
 
-const InputWithIcon: React.FC<InputWithIconProps> = ({
+const InputPassword: React.FC<InputPasswordProps> = ({
   iconName,
+  altIconName,
   iconSize = "medium",
   iconColor = "text-gray-500",
   onIconClick,
@@ -29,7 +31,7 @@ const InputWithIcon: React.FC<InputWithIconProps> = ({
       <Input inputType={isPasswordVisible ? "text" : "password"} {...rest} />
       <div className="absolute inset-y-0 right-0 flex items-center pr-3">
         <Icon
-          iconName={iconName}
+          iconName={isPasswordVisible ? iconName : altIconName} // Change icon based on visibility
           iconSize={iconSize}
           iconColor={iconColor}
           onClick={togglePasswordVisibility}
@@ -39,4 +41,4 @@ const InputWithIcon: React.FC<InputWithIconProps> = ({
   );
 };
 
-export default InputWithIcon;
+export default InputPassword;
