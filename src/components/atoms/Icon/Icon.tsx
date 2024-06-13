@@ -4,6 +4,7 @@ import classNames from "classnames";
 export interface IconProps {
   iconName: string; // Name or path to the icon
   iconSize?: "small" | "medium" | "large";
+  customIconSize?: string;
   iconColor?: string; // Tailwind color classes, e.g., 'text-gray-500'
   className?: string; // Custom Tailwind class/s
   onClick?: () => void; // Click event handler
@@ -16,7 +17,7 @@ const sizeClasses = {
 };
 
 const Icon: React.FC<IconProps> = memo(
-  ({ iconName, iconSize = "medium", iconColor = "text-gray-500", className, onClick }) => {
+  ({ iconName, iconSize = "medium", customIconSize, iconColor = "", className, onClick }) => {
     const [SvgIcon, setSvgIcon] = useState<React.FC<SVGProps<SVGSVGElement>> | null>(null);
 
     useEffect(() => {
@@ -38,9 +39,11 @@ const Icon: React.FC<IconProps> = memo(
 
     if (!SvgIcon) return <span className="text-red-500">Icon not found</span>;
 
+    const sizeClass = customIconSize || sizeClasses[iconSize];
+
     return (
       <svg
-        className={classNames(sizeClasses[iconSize], iconColor, className, "cursor-pointer")}
+        className={classNames(sizeClass, iconColor, className, "cursor-pointer")}
         onClick={onClick}
         aria-hidden="true"
       >

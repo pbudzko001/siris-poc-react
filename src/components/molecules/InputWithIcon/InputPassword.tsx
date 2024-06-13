@@ -5,6 +5,7 @@ import Icon from "../../atoms/Icon/Icon";
 interface InputPasswordProps extends InputProps {
   iconName: string;
   altIconName: string;
+  customIconSize?: string;
   iconSize?: "small" | "medium" | "large";
   iconColor?: string;
   onIconClick?: () => void;
@@ -14,7 +15,8 @@ const InputPassword: React.FC<InputPasswordProps> = ({
   iconName,
   altIconName,
   iconSize = "medium",
-  iconColor = "text-gray-500",
+  customIconSize,
+  iconColor = "",
   onIconClick,
   inputType = "password",
   ...rest
@@ -33,6 +35,7 @@ const InputPassword: React.FC<InputPasswordProps> = ({
         <Icon
           iconName={isPasswordVisible ? iconName : altIconName} // Change icon based on visibility
           iconSize={iconSize}
+          customIconSize={customIconSize}
           iconColor={iconColor}
           onClick={togglePasswordVisibility}
         />

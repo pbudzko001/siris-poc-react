@@ -4,6 +4,7 @@ const colors = {
     pwc: {
       gray: "#F2F2F2",
       orange: "#FDAB8D",
+      primaryOrange: "#E45C2B",
     },
   },
 };

@@ -23,7 +23,9 @@ const Input: React.FC<InputProps> = React.memo(
     id,
     onChange,
   }) => {
-    const baseClass = "w-full h-12 p-2 border focus-visible:border-pwc-orange rounded-lg";
+    const responsivClass = "text-xs w-full xxl:h-[3.5vh] xl:h-[4.5vh] md:h-[5.5vh]";
+    const baseClass = "p-2 border  rounded-lg px-4 py-2";
+    const focusClass = "focus:outline-none focus:ring-0 focus:border-pwc-orange";
     const disabledClass = {
       "bg-gray-500": disabled,
       "bg-white": !disabled,
@@ -32,7 +34,14 @@ const Input: React.FC<InputProps> = React.memo(
       "border-red-500": !!errorMessage,
       "border-gray-300": !errorMessage,
     };
-    const inputClass = classNames(baseClass, disabledClass, errorClass, customClass);
+    const inputClass = classNames(
+      baseClass,
+      responsivClass,
+      disabledClass,
+      errorClass,
+      focusClass,
+      customClass
+    );
     return (
       <div className="mb-4">
         <input
@@ -44,7 +53,7 @@ const Input: React.FC<InputProps> = React.memo(
           onChange={onChange}
           className={inputClass}
         />
-        {errorMessage && <p className="mt-2 text-sm text-red-500">{errorMessage}</p>}
+        {errorMessage && <p className="mt-2 text-xs text-red-500">{errorMessage}</p>}
       </div>
     );
   }

@@ -35,23 +35,32 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText }
   );
 
   const baseStyle =
-    "bg-white p-8 rounded-tl-2xl rounded-bl-2xl shadow-md w-full h-full max-w-xl flex flex-col items-center justify-around";
+    "bg-white p-8 rounded-tl-2xl rounded-bl-2xl shadow-md w-full h-full flex flex-col items-center justify-center";
   const classes = classNames(baseStyle, customClass);
 
   return (
     <div className={classes}>
-      <div className="flex justify-center mb-4">
+      <div className="mb-10 h-[2dvw]">
         <Image imageSize="auto" imageName="pwc-logo"></Image>
       </div>
-      <Title level={3} titleText={titleText} customClass="mb-6" />
-      <form onSubmit={handleSubmit} className="w-full max-w-sm flex flex-col justify-evenly">
+      <div>
+        <Title
+          level={3}
+          titleText={titleText}
+          customClass="mb-10 text-center xl:text-base xxl:text-xl"
+        />
+      </div>
+      <form
+        onSubmit={handleSubmit}
+        className="xl:w-[15dvw] xxl:h-[15dvh] max-w-md flex flex-col justify-evenly"
+      >
         <div className="mb-4">
           <Label text="Email" customClass="font-bold"></Label>
           <Input
             id="email"
             inputType="email"
             value={formData.email}
-            placeholder="Enter your email"
+            placeholder="Inserir e-mail"
             onChange={handleInputChange}
           />
         </div>
@@ -64,14 +73,14 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText }
               id="password"
               inputType="password"
               value={formData.password}
-              placeholder="Enter your password"
+              placeholder="Inserir a palavra-passe"
               onChange={handleInputChange}
               iconName="view-off"
               altIconName="view"
             />
           </div>
         </div>
-        <div className="flex items-center justify-between mt-4">
+        <div className=" mt-4 h-[12dvh]:">
           <Button buttonType="submit" label="ENTRAR" />
         </div>
       </form>

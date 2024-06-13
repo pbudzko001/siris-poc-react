@@ -39,8 +39,8 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-evenly bg-customBlack">
-      <div className="flex flex-row items-center">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-customBlack">
+      <div className="flex flex-row items-center py-[3.5dvw]">
         <div className="h-[65lvh] w-[30dvw]">
           <LoginForm
             url="/forgot-password"
@@ -49,14 +49,14 @@ const Login: React.FC = () => {
             titleText="Solução Bancária Integrada"
           />
         </div>
-        <div className=" bg-pwc-gray max-w-lg w-[30dvw] h-[80lvh] rounded-lg border-8  border-white">
-          <div className="px-[3rem] py-[7rem] h-full">
+        <div className=" bg-pwc-gray max-w-xxl w-[25dvw] h-[80lvh] rounded-lg border-8  border-white">
+          <div className="px-[4dvw] h-full">
             <Image imageName="login-image" imageSize="auto"></Image>
           </div>
         </div>
       </div>
 
-      <div className="mt-4 content-between">
+      <div className="content-center">
         <Label
           text="© 2024 PwC. PwC refere-se à rede e a uma ou mais de suas firmas membro. Todos os direitos reservados."
           customClass="text-white text-xs"
