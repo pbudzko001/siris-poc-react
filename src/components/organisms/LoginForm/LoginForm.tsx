@@ -35,16 +35,16 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText }
   );
 
   const baseStyle =
-    "bg-white p-8 rounded shadow-md w-full max-w-md flex flex-col items-center justify-center";
+    "bg-white p-8 rounded-tl-2xl rounded-bl-2xl shadow-md w-full h-full max-w-xl flex flex-col items-center justify-around";
   const classes = classNames(baseStyle, customClass);
 
   return (
     <div className={classes}>
       <div className="flex justify-center mb-4">
-        <Image imageSize="small" imageName="pwc-logo"></Image>
+        <Image imageSize="auto" imageName="pwc-logo"></Image>
       </div>
       <Title level={3} titleText={titleText} customClass="mb-6" />
-      <form onSubmit={handleSubmit} className="w-full max-w-sm">
+      <form onSubmit={handleSubmit} className="w-full max-w-sm flex flex-col justify-evenly">
         <div className="mb-4">
           <Label text="Email" customClass="font-bold"></Label>
           <Input

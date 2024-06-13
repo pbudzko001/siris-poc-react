@@ -5,7 +5,7 @@ import classNames from "classnames";
 
 export interface ImageProps {
   imageName: string; // Name or path to the image
-  imageSize?: "small" | "medium" | "large";
+  imageSize?: "small" | "medium" | "auto";
   customSize?: string; // Custom Tailwind size classes
   className?: string; // Custom Tailwind class/es
   onClick?: () => void; // Click event handler
@@ -14,7 +14,7 @@ export interface ImageProps {
 const sizeClasses = {
   small: "h-16 w-16",
   medium: "h-32 w-32",
-  large: "h-64 w-64",
+  auto: "h-full w-full",
 };
 
 const Image: React.FC<ImageProps> = memo(
