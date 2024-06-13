@@ -11,12 +11,11 @@ export interface LoginFormProps {
   onLogin: (username: string, password: string) => void;
   customClass?: string;
   id?: string;
-  url: string;
-  linkText: string;
   titleText: string;
+  loginError?: string;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText }) => {
+const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText, loginError }) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +39,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText }
 
   return (
     <div className={classes}>
-      <div className="mb-10 h-[2.5dvw]">
+      <div className="mb-10 xxl:h-[2.5dvw] xl:h-[2.5dvw] lg:h-[2.5dvw] md:h-[3dvw] sm:h-[3dvw]">
         <Image imageSize="auto" imageName="pwc-logo"></Image>
       </div>
       <div>
@@ -52,9 +51,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText }
       </div>
       <form
         onSubmit={handleSubmit}
-        className="xl:w-[18dvw] xxl:h-[15dvh] max-w-md flex flex-col justify-evenly"
+        className="lg:w-[18dvw] xl:w-[18dvw] xxl:h-[15dvh] max-w-md flex flex-col justify-evenly"
       >
-        <div className="mb-4">
+        <div>
           <Label text="Email" customClass="font-bold"></Label>
           <Input
             id="email"
@@ -63,8 +62,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText }
             placeholder="Inserir e-mail"
             onChange={handleInputChange}
           />
+          {loginError && <p className="text-red-500 text-xs">{loginError}</p>}
         </div>
-        <div className="mb-4">
+        <div>
           <div>
             <Label text="Palavra-passe" customClass="font-bold"></Label>
           </div>
@@ -78,6 +78,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText }
               iconName="view-off"
               altIconName="view"
             />
+            {loginError && <p className="text-red-500 text-xs">{loginError}</p>}
           </div>
         </div>
         <div className=" mt-4 h-[12dvh]:">

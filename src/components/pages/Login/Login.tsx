@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import LoginForm from "../../organisms/LoginForm/LoginForm";
 import Label from "../../atoms/Label/Label";
 import Image from "../../atoms/Image/Image";
+import { useNavigate } from "react-router-dom";
 
 interface Credentials {
   username: string;
@@ -9,13 +10,12 @@ interface Credentials {
 }
 
 const Login: React.FC = () => {
-  const [credentials, setCredentials] = useState<Credentials>({
-    username: "",
-    password: "",
-  });
+  const [credentials, setCredentials] = useState<Credentials>({ username: "", password: "" });
+  const [loginError, setLoginError] = useState<string>("");
+  const navigate = useNavigate();
 
   const handleLogin = async (username: string, password: string) => {
-    try {
+    /*  try {
       // Replace with actual login logic
       const response = await fetch("/api/login", {
         method: "POST",
@@ -34,7 +34,16 @@ const Login: React.FC = () => {
       // Handle successful login (e.g., redirect to dashboard)
     } catch (error) {
       console.error("Login error:", error);
-      // Handle login error (e.g., display error message)
+      // Handle login error (e.g., display error message) */
+
+    // Dummy login logic
+    const dummyResponse = { username: "admin@test.com", password: "123" };
+
+    if (username === dummyResponse.username && password === dummyResponse.password) {
+      console.log("Login successful");
+      navigate("/dashboard");
+    } else {
+      setLoginError("Email ou palavra-passe incorretos");
     }
   };
 
@@ -43,10 +52,9 @@ const Login: React.FC = () => {
       <div className="flex flex-row items-center py-[3.5dvw]">
         <div className="h-[65lvh] w-[30dvw]">
           <LoginForm
-            url="/forgot-password"
-            linkText="Forgot your password?"
             onLogin={handleLogin}
             titleText="Solução Bancária Integrada"
+            loginError={loginError}
           />
         </div>
         <div className=" bg-pwc-gray max-w-xxl w-[25dvw] h-[80lvh] rounded-lg border-8  border-white">
