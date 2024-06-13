@@ -26,14 +26,12 @@ const Button: React.FC<ButtonProps> = ({
     variant === "primary"
       ? "bg-pwc-primaryOrange hover:bg-pwc-orange text-white"
       : "bg-pwcGray-500 hover:bg-gray-700 text-white";
-  const disabledClass = "opacity-50 cursor-not-allowed";
-  const enabledClass = disabled ? disabledClass : "";
+  const disabledClass = "bg-pwc-gray opacity-1 cursor-not-allowed";
 
   const buttonClass = classNames(
     baseClass,
     responsiveClass,
-    variantClass,
-    enabledClass,
+    disabled ? disabledClass : variantClass,
     customClass
   );
 

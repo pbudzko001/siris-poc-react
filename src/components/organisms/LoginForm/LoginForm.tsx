@@ -38,21 +38,23 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText }
     "bg-white p-8 rounded-tl-2xl rounded-bl-2xl shadow-md w-full h-full flex flex-col items-center justify-center";
   const classes = classNames(baseStyle, customClass);
 
+  const isFormValid = formData.email !== "" && formData.password !== "";
+
   return (
     <div className={classes}>
-      <div className="mb-10 h-[2dvw]">
+      <div className="mb-10 h-[2.5dvw]">
         <Image imageSize="auto" imageName="pwc-logo"></Image>
       </div>
       <div>
         <Title
           level={3}
           titleText={titleText}
-          customClass="mb-10 text-center xl:text-base xxl:text-xl"
+          customClass="mb-10 text-center md:text-base xl:text-xl xxl:text-xxl"
         />
       </div>
       <form
         onSubmit={handleSubmit}
-        className="xl:w-[15dvw] xxl:h-[15dvh] max-w-md flex flex-col justify-evenly"
+        className="xl:w-[18dvw] xxl:h-[15dvh] max-w-md flex flex-col justify-evenly"
       >
         <div className="mb-4">
           <Label text="Email" customClass="font-bold"></Label>
@@ -81,7 +83,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText }
           </div>
         </div>
         <div className=" mt-4 h-[12dvh]:">
-          <Button buttonType="submit" label="ENTRAR" />
+          <Button buttonType="submit" label="ENTRAR" disabled={!isFormValid} />
         </div>
       </form>
     </div>
