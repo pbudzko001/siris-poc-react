@@ -6,24 +6,24 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 interface Credentials {
-  username: string;
+  email: string;
   password: string;
 }
 
 const Login: React.FC = () => {
-  const [credentials, setCredentials] = useState<Credentials>({ username: "", password: "" });
+  const [credentials, setCredentials] = useState<Credentials>({ email: "", password: "" });
   const [loginError, setLoginError] = useState<string>("");
   const [submitted, setSubmitted] = useState<boolean>(false);
   const navigate = useNavigate();
 
   // Use the custom hook
   const { user, isLoading, isError, revalidate } = useAuth(
-    submitted ? credentials.username : "",
+    submitted ? credentials.email : "",
     submitted ? credentials.password : ""
   );
 
-  const handleLogin = async (username: string, password: string) => {
-    setCredentials({ username, password });
+  const handleLogin = async (email: string, password: string) => {
+    setCredentials({ email, password });
     setSubmitted(true);
     await revalidate();
   };

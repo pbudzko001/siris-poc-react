@@ -2,14 +2,14 @@ import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 
 const axiosInstance = axios.create({
-  baseURL: "https://api.example.com",
+  baseURL: "https://localhost:7146",
   timeout: 1000,
   headers: { "Content-Type": "application/json" },
 });
 
 // Mock Adapter configuration for test api
 
-const mock = new MockAdapter(axiosInstance);
+/* const mock = new MockAdapter(axiosInstance);
 
 // Mock for login rote
 mock.onPost("/login").reply((config) => {
@@ -19,6 +19,6 @@ mock.onPost("/login").reply((config) => {
   } else {
     return [401, { message: "Email ou palavra-passe incorretos" }];
   }
-});
+}); */
 
 export default axiosInstance;
