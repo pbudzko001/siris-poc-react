@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
   headers: { "Content-Type": "application/json" },
 });
 
-// Mock Adapter configuration for test api
+// Mock Adapter configuration for test api 1
 
 /* const mock = new MockAdapter(axiosInstance);
 
