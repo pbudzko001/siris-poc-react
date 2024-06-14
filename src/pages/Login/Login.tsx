@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LoginForm from "../../components/organisms/LoginForm/LoginForm";
 import Label from "../../components/atoms/Label/Label";
 import Image from "../../components/atoms/Image/Image";
@@ -13,24 +13,33 @@ interface Credentials {
 const Login: React.FC = () => {
   const [credentials, setCredentials] = useState<Credentials>({ username: "", password: "" });
   const [loginError, setLoginError] = useState<string>("");
+  const [submitted, setSubmitted] = useState<boolean>(false);
   const navigate = useNavigate();
 
+  // Use the custom hook
   const { user, isLoading, isError, revalidate } = useAuth(
-    credentials.username,
-    credentials.password
+    submitted ? credentials.username : "",
+    submitted ? credentials.password : ""
   );
 
   const handleLogin = async (username: string, password: string) => {
     setCredentials({ username, password });
-    revalidate();
-
-    if (user) {
-      console.log("Login successful");
-      navigate("/dashboard");
-    } else if (isError) {
-      setLoginError("Email ou palavra-passe incorretos");
-    }
+    setSubmitted(true);
+    await revalidate();
   };
+
+  useEffect(() => {
+    if (!isLoading && submitted) {
+      if (user) {
+        console.log("Login successful");
+        navigate("/dashboard");
+      } else if (isError) {
+        // In case of login fail
+        setLoginError("Email ou palavra-passe incorretos");
+        setSubmitted(false); // reset submission state
+      }
+    }
+  }, [isLoading, isError, user, navigate, submitted]);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-customBlack">
