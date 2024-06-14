@@ -11,7 +11,7 @@ const axiosInstance = axios.create({
 
 const mock = new MockAdapter(axiosInstance);
 
-// Mock para a rota de login
+// Mock for login rote
 mock.onPost("/login").reply((config) => {
   const { username, password } = JSON.parse(config.data);
   if (username === "admin@test.com" && password === "123") {
