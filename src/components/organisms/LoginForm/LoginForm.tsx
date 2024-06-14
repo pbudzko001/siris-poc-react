@@ -53,7 +53,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText, 
         onSubmit={handleSubmit}
         className="lg:w-[18dvw] xl:w-[18dvw] xxl:h-[15dvh] max-w-md flex flex-col justify-evenly"
       >
-        <div>
+        <div className="mb-3">
           <Label text="Email" customClass="font-bold"></Label>
           <Input
             id="email"
@@ -62,9 +62,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText, 
             placeholder="Inserir e-mail"
             onChange={handleInputChange}
           />
-          {loginError && <p className="text-red-500 text-xs">{loginError}</p>}
+          {loginError && <p className="text-errorRed text-[0.7rem]">{loginError}</p>}
         </div>
-        <div>
+        <div className="mb-3">
           <div>
             <Label text="Palavra-passe" customClass="font-bold"></Label>
           </div>
@@ -78,7 +78,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText, 
               iconName="view-off"
               altIconName="view"
             />
-            {loginError && <p className="text-red-500 text-xs">{loginError}</p>}
+            {loginError && <p className="text-errorRed text-[0.7rem]">{loginError}</p>}
           </div>
         </div>
         <div className=" mt-4 h-[12dvh]:">

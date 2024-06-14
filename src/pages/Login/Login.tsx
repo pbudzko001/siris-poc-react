@@ -44,7 +44,7 @@ const Login: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-customBlack">
       <div className="flex flex-row items-center py-[3.5dvw]">
-        <div className="h-[65lvh] w-[30dvw]">
+        <div className="xl:h-[65lvh] xl:w-[30dvw]">
           <LoginForm
             onLogin={handleLogin}
             titleText="Solução Bancária Integrada"
