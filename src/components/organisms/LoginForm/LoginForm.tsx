@@ -1,8 +1,7 @@
 import React, { useState, useCallback } from "react";
 import Title from "../../atoms/Title/Title";
 import Button from "../../atoms/Button/Button";
-import Input from "../../atoms/Input/Input";
-import InputWithIcon from "../../molecules/InputWithIcon/InputPassword";
+import InputWithIcon from "../../molecules/InputWithIcon/InputWithIcon"; // Atualizado o caminho do novo componente
 import Image from "../../atoms/Image/Image";
 import Label from "../../atoms/Label/Label";
 import classNames from "classnames";
@@ -55,14 +54,14 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText, 
       >
         <div className="mb-3">
           <Label text="Email" customClass="font-bold"></Label>
-          <Input
+          <InputWithIcon
             id="email"
             inputType="email"
             value={formData.email}
             placeholder="Inserir e-mail"
             onChange={handleInputChange}
+            errorMessage={loginError}
           />
-          {loginError && <p className="text-errorRed text-[0.7rem]">{loginError}</p>}
         </div>
         <div className="mb-3">
           <div>
@@ -77,8 +76,8 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText, 
               onChange={handleInputChange}
               iconName="view-off"
               altIconName="view"
+              errorMessage={loginError}
             />
-            {loginError && <p className="text-errorRed text-[0.7rem]">{loginError}</p>}
           </div>
         </div>
         <div className=" mt-4 h-[12dvh]:">
