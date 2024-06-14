@@ -39,14 +39,14 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, customClass, titleText, 
 
   return (
     <div className={classes}>
-      <div className="mb-10 xxl:h-[2.5dvw] xl:h-[2.5dvw] lg:h-[2.5dvw] md:h-[3dvw] sm:h-[3dvw]">
+      <div className="mb-8 xl:mb-10 xxl:mb-12 xxl:h-[4rem] xl:h-[3rem] lg:h-[3rem] md:h-[2rem] sm:h-[2rem]">
         <Image imageSize="auto" imageName="pwc-logo"></Image>
       </div>
       <div>
         <Title
           level={3}
           titleText={titleText}
-          customClass="mb-10 text-center md:text-base xl:text-xl xxl:text-xxl"
+          customClass="mb-8 xl:mb-10 xxl:mb-12 text-center md:text-base xl:text-xl xxl:text-xxl"
         />
       </div>
       <form
